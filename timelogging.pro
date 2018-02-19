@@ -1,4 +1,4 @@
-update=09.01.2018 07:31:17
+update=19.02.2018 21:59:02
 version=1
 last_client=kicad
 [pcbnew]
@@ -75,3 +75,4 @@ LibName33=maxim
 LibName34=C:/Users/leo/Documents/kicad-libs-master/shardy
 LibName35=C:/Users/leo/Documents/Conn_uSDcard/uSD_push-push_ebay
 LibName36=rp402
+LibName37=ntr4003n
