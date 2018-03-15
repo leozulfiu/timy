@@ -36,6 +36,7 @@ LIBS:shardy
 LIBS:uSD_push-push_ebay
 LIBS:rp402
 LIBS:ntr4003n
+LIBS:ds3231
 LIBS:timelogging-cache
 EELAYER 25 0
 EELAYER END
@@ -51,17 +52,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L DS3231 U3
-U 1 1 5A482FAF
-P 9000 1600
-F 0 "U3" H 8900 2075 50  0000 R CNN
-F 1 "DS3231" H 8900 2000 50  0000 R CNN
-F 2 "Housings_SOIC:SOIC-16W_7.5x10.3mm_Pitch1.27mm" H 9050 1200 50  0001 L CNN
-F 3 "" H 9270 1850 50  0001 C CNN
-	1    9000 1600
-	1    0    0    -1  
-$EndComp
 $Comp
 L Micro_SD_Card J1
 U 1 1 5A4830DE
@@ -133,17 +123,6 @@ F 3 "" H 3450 1650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Crystal Q2
-U 1 1 5A487B76
-P 7800 3950
-F 0 "Q2" H 7800 4100 50  0000 C CNN
-F 1 "16Mhz" H 7800 3800 50  0000 C CNN
-F 2 "Crystals:Crystal_SMD_3225-4pin_3.2x2.5mm_HandSoldering" H 7800 3950 50  0001 C CNN
-F 3 "" H 7800 3950 50  0001 C CNN
-	1    7800 3950
-	0    1    -1   0   
-$EndComp
-$Comp
 L C C5
 U 1 1 5A488007
 P 8200 3650
@@ -185,17 +164,6 @@ F 1 "GND" H 5800 6100 50  0000 C CNN
 F 2 "" H 5800 6250 50  0001 C CNN
 F 3 "" H 5800 6250 50  0001 C CNN
 	1    5800 6250
-	1    0    0    -1  
-$EndComp
-$Comp
-L CP1 C4
-U 1 1 5A492D09
-P 4200 4000
-F 0 "C4" H 4225 4100 50  0000 L CNN
-F 1 "0.1uF" H 4225 3900 50  0000 L CNN
-F 2 "Capacitors_Tantalum_SMD:CP_Tantalum_Case-A_EIA-3216-18_Hand" H 4200 4000 50  0001 C CNN
-F 3 "" H 4200 4000 50  0001 C CNN
-	1    4200 4000
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -300,12 +268,10 @@ Wire Wire Line
 	8100 1500 8500 1500
 Wire Wire Line
 	8100 1600 8500 1600
-Connection ~ 8300 1500
 Wire Wire Line
-	8300 1400 8300 1500
+	8300 1400 8300 1600
 Wire Wire Line
-	8200 1600 8200 1400
-Connection ~ 8200 1600
+	8200 1500 8200 1400
 Wire Wire Line
 	7000 4600 7350 4600
 Wire Wire Line
@@ -338,9 +304,9 @@ Wire Wire Line
 	7400 3900 7400 3650
 Text GLabel 950  5700 3    60   Input ~ 0
 VCC
-Text GLabel 7350 5200 2    60   Input ~ 0
-BTN_A
 Text GLabel 7350 5300 2    60   Input ~ 0
+BTN_A
+Text GLabel 7350 5200 2    60   Input ~ 0
 BTN_B
 $Comp
 L R R5
@@ -666,17 +632,6 @@ NoConn ~ 7000 4200
 NoConn ~ 7000 4300
 NoConn ~ 7000 4400
 NoConn ~ 7000 4500
-$Comp
-L Conn_02x03_Odd_Even J2
-U 1 1 5A4DE5DB
-P 5750 1300
-F 0 "J2" H 5800 1500 50  0000 C CNN
-F 1 "ICSP" H 5800 1100 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_2x03_Pitch2.54mm" H 5750 1300 50  0001 C CNN
-F 3 "" H 5750 1300 50  0001 C CNN
-	1    5750 1300
-	1    0    0    -1  
-$EndComp
 Text GLabel 7900 4650 2    60   Input ~ 0
 RESET
 Wire Wire Line
@@ -689,32 +644,20 @@ MISO
 $Comp
 L GND #PWR015
 U 1 1 5A4E6ECB
-P 6150 1550
-F 0 "#PWR015" H 6150 1300 50  0001 C CNN
-F 1 "GND" H 6150 1400 50  0000 C CNN
-F 2 "" H 6150 1550 50  0001 C CNN
-F 3 "" H 6150 1550 50  0001 C CNN
-	1    6150 1550
+P 5300 1700
+F 0 "#PWR015" H 5300 1450 50  0001 C CNN
+F 1 "GND" H 5300 1550 50  0000 C CNN
+F 2 "" H 5300 1700 50  0001 C CNN
+F 3 "" H 5300 1700 50  0001 C CNN
+	1    5300 1700
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6150 1550 6150 1400
-Wire Wire Line
-	6150 1400 6050 1400
-Text GLabel 5450 1300 0    60   Input ~ 0
+Text GLabel 5450 1500 0    60   Input ~ 0
 SCK
 Text GLabel 5450 1400 0    60   Input ~ 0
 RESET
-Text GLabel 6200 1300 2    60   Input ~ 0
+Text GLabel 5450 1300 0    60   Input ~ 0
 MOSI
-Wire Wire Line
-	5550 1300 5450 1300
-Wire Wire Line
-	5450 1200 5550 1200
-Wire Wire Line
-	5450 1400 5550 1400
-Wire Wire Line
-	6050 1300 6200 1300
 $Comp
 L Battery BAT_VCC1
 U 1 1 5A4F8913
@@ -815,7 +758,6 @@ Wire Wire Line
 Connection ~ 9650 1800
 Wire Wire Line
 	9700 1550 9650 1550
-NoConn ~ 6050 1200
 $Comp
 L PWR_FLAG #FLG018
 U 1 1 5A592FA4
@@ -1007,4 +949,56 @@ F 3 "" H 3000 4900 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 NoConn ~ 4400 3600
+$Comp
+L DS3231MZ U3
+U 1 1 5A8DCFAE
+P 9000 1600
+F 0 "U3" H 8900 2150 50  0000 R CNN
+F 1 "DS3231MZ" H 8900 2050 50  0000 R CNN
+F 2 "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" H 9000 1000 50  0001 C CNN
+F 3 "" H 9000 900 50  0001 C CNN
+	1    9000 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Conn_01x05 J2
+U 1 1 5A8DE814
+P 5650 1400
+F 0 "J2" H 5650 1700 50  0000 C CNN
+F 1 "ICSP" H 5650 1100 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x05_Pitch2.54mm_SMD_Pin1Left" H 5650 1400 50  0001 C CNN
+F 3 "" H 5650 1400 50  0001 C CNN
+	1    5650 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 1700 5300 1600
+Wire Wire Line
+	5300 1600 5450 1600
+Connection ~ 8200 1500
+Connection ~ 8300 1600
+$Comp
+L C C4
+U 1 1 5A8E0C3D
+P 4200 4000
+F 0 "C4" H 4225 4100 50  0000 L CNN
+F 1 "0.1uF" H 4225 3900 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 4238 3850 50  0001 C CNN
+F 3 "" H 4200 4000 50  0001 C CNN
+	1    4200 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Crystal_GND24 Q2
+U 1 1 5A948BFD
+P 7800 3950
+F 0 "Q2" V 7900 4150 50  0000 L CNN
+F 1 "16Mhz" V 7600 3700 50  0000 L CNN
+F 2 "Crystals:Crystal_SMD_3225-4pin_3.2x2.5mm" H 7800 3950 50  0001 C CNN
+F 3 "" H 7800 3950 50  0001 C CNN
+	1    7800 3950
+	0    1    1    0   
+$EndComp
+NoConn ~ 8000 3950
+NoConn ~ 7600 3950
 $EndSCHEMATC
